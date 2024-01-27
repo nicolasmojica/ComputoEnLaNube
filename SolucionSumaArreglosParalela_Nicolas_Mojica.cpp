@@ -1,7 +1,5 @@
-/*Computo en la Nube 
-  Nicolas Mojica Gomez 
-  a01794354
-  Programacion Solucion Paralela */
+// PruebaOMP.cpp : Este archivo contiene la función "main". La ejecución del programa comienza y termina ahí.
+//
 
 #include <iostream>
 #include <omp.h>
@@ -20,18 +18,20 @@ int main()
 
     for (i = 0;i < N;i++)
     {
-        a[i] = i + 1;
-        b[i] = a[i] + 10;
+        a[i] = i + rand();
     }
 
-   
+    for (i = 0;i < N;i++)
+    {
+        b[i] = (i + rand());
+    }
 
     int pedazos = chunk;
 
-    #pragma omp parallel for \
+#pragma omp parallel for \
     shared(a,b,c,pedazos) private (i) \
     schedule(static,pedazos)
-    
+
     for (i = 0;i < N;i++)
         c[i] = a[i] + b[i];
 
