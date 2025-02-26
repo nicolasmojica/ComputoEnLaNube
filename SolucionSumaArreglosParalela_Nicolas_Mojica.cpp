@@ -4,7 +4,7 @@
 #include <iostream>
 #include <omp.h>
 
-#define N 1000
+#define N 5000
 #define chunk 2000
 #define mostrar 5
 
